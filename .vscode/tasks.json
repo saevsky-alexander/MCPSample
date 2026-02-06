@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"command" : "dotnet",
+			"type":  "process",
+			"group": "build",
+			"problemMatcher": "$msCompile",
+			"label": "build",
+			"args": [
+				"build",
+				"${workspaceFolder}/MCPSample/MCPSample.csproj",
+				"/property:GenerateFullPaths=true"
+			]
+		}
+	]
+}
