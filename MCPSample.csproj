@@ -15,5 +15,12 @@
     <PackageReference Include="ModelContextProtocol" Version="0.7.0-preview.1" />
     <PackageReference Include="OllamaSharp" Version="5.4.16" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Content Include="Metamodel/*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MetamodelInstruction.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,88 @@
+{
+  "Kind": "scd",
+  "Generation": 1,
+  "Title": "SCD полностью",
+  "Namespace": "http://www.iec.ch/61850/2003/SCL",
+  "FileModel": "Editable",
+  "Override": [ "ssd", "icdFixed", "subNetwork" ],
+  "Annotations": [
+    {
+      "Name": "SCL",
+      "Class": "SCLModel.SCL, SCLModel",
+      "Title": "Описание",
+      "Properties": [
+        {
+          "Name": "Header.id",
+          "Title": "id",
+          "IsRequired" : true
+        },
+        {
+          "Name": "Header.TextString",
+          "Title": "текст"
+        },
+        {
+          "Name" : "Version",
+          "IsReadOnly" : true,
+          "Title": "Редакция SCL"
+        },
+        {
+          "Name": "version",
+          "IsReadOnly" : true,
+          "Default": "2007"
+        },
+        {
+          "Name": "revision",
+          "IsReadOnly" : true,
+          "Default": "B"
+        },
+        {
+          "Name": "release",
+          "IsReadOnly" : true,
+          "Default": 4
+        },
+        {
+          "Name": "Header.version",
+          "Title": "Версия документа"
+        },
+        {
+          "Name": "Header.revision",
+          "Title": "Модификация"
+        },
+        {
+          "Name": "Header.toolID",
+          "Title": "Инструмент",
+          "IsReadOnly" : true
+        }
+
+      ],
+      "Collections": [
+        {
+          "Name": "Substation",
+          "Title": "Подстанции"
+        },
+        {
+          "Name": "IED",
+          "Title": "ИЭУ"
+        },
+        {
+          "Name": "Line",
+          "Title": "Линии"
+        },
+        {
+          "Name": "Process",
+          "Title": "Процессы"
+        },
+        {
+          "Name": "SubNetwork",
+          "Title": "Подстанции",
+          "AccessorClass": "ABSWorks.CustomEditors.SubNetworkAccessor, ABSWorks.CustomEditors",
+          "Types": [ "SCLModel.tSubNetwork, SCLModel" ]
+        },
+        {
+          "Name": "DataTypeTemplates",
+          "Title": "Шаблоны типов"
+        }
+      ]
+    }
+  ]
+}

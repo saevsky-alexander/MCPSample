@@ -1,0 +1,951 @@
+{
+  "Kind": "icdFixed",
+  "Title": "Описание возможностей ИЭУ",
+  "FileModel": "Editable",
+  "Include" : ["DataTypeTemplates"],
+  "Namespace": "http://www.iec.ch/61850/2003/SCL",
+    "Annotations": [
+    {
+      "Name": "SCL",
+      "Class": "SCLModel.SCL, SCLModel",
+      "Title": "Описание",
+      "Properties": [
+        {
+          "Name": "Header.id",
+          "Title": "id",
+          "IsRequired" : true
+        },
+        {
+          "Name": "Header.TextString",
+          "Title": "текст"
+        },
+        {
+          "Name" : "Version",
+          "IsReadOnly" : true,
+          "Title": "Редакция SCL"
+        },
+        {
+          "Name": "version",
+          "IsReadOnly" : true,
+          "Default": "2007"
+        },
+        {
+          "Name": "revision",
+          "IsReadOnly" : true,
+          "Default": "B"
+        },
+        {
+          "Name": "release",
+          "IsReadOnly" : true,
+          "Default": 4
+        },
+        {
+          "Name": "Header.version",
+          "Title": "Версия документа"
+        },
+        {
+          "Name": "Header.revision",
+          "Title": "Модификация"
+        },
+        {
+          "Name": "Header.toolID",
+          "Title": "Инструмент",
+          "IsReadOnly" : true
+        }
+
+      ],
+      "Collections": [
+        {
+          "Name": "IED",
+          "Title": "ИЭУ",
+          "IsConstant": true
+        },
+        {
+          "Name": "DataTypeTemplates",
+          "Title": "Шаблоны типов"
+        }
+      ]
+    },
+    {
+      "Name": "IED",
+      "Class": "SCLModel.tIED, SCLModel",
+      "Title": "ИЭУ",
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "type",
+          "IsReadOnly": true,
+          "Title": "Тип"
+        },
+        {
+          "Name": "manufacturer",
+          "IsReadOnly": true,
+          "Title": "Производитель"
+        },
+        {
+          "Name": "configVersion",
+          "Title": "Конфигурация"
+        },
+        {
+          "Name": "owner",
+          "Title": "Владелец"
+        },
+        {
+          "Name": "engRight",
+          "IsReadOnly": true,
+          "Title": "Права"
+        },
+        {
+          "Name" : "Version",
+          "IsReadOnly": true,
+          "Title": "Редакция SCL"
+        },
+        {
+          "Name": "originalSclVersion",
+          "IsReadOnly": true,
+          "Title": "SCL Версия"
+        },
+        {
+          "Name": "originalSclRevision",
+          "IsReadOnly": true,
+          "Title": "SCL Revision"
+        },
+        {
+          "Name": "originalSclRelease",
+          "IsReadOnly": true,
+          "Title": "SCL Release"
+        }        
+      ],
+      "Collections": [
+        {
+          "Name": "AccessPoint",
+          "Title": "Точки доступа",
+          "IsConstant": true
+        }
+      ]
+    },
+      {
+        "Name": "AccessPoint",
+        "Title": "Точка доступа",
+        "Class": "SCLModel.tAccessPoint, SCLModel",
+        "IsReadOnly" : true,
+        "Properties": [
+          {
+            "Name": "name",
+            "IsRequired": true,
+            "Title": "Название"
+          },
+          {
+            "Name": "desc",
+            "Title": "Описание"
+          },
+          {
+            "Name": "router",
+            "Title": "router",
+            "Class": "System.Boolean"
+          },
+          {
+            "Name": "clock",
+            "Title": "clock",
+            "Class": "System.Boolean"
+          }
+        ],
+        "Collections": [
+          {
+            "Name": "LDevice",
+            "Title": "Логические устройства",
+            "IsConstant": true,
+            "AccessorClass": "ABSWorks.CustomEditors.SCLLDeviceNamedProperty, ABSWorks.CustomEditors"
+          },
+          {
+            "Name": "LN",
+            "Title": "Логические узлы",
+            "AccessorClass": "ABSWorks.CustomEditors.AccessPointLN, ABSWorks.CustomEditors",
+            "Types": [ "SCLModel.tLN, SCLModel" ],
+            "IsConstant" : true
+         }
+        ]
+      },
+    {
+      "Name": "LDevice",
+      "Title": "Логическое устройство",
+      "Class": "SCLModel.tLDevice, SCLModel",
+      "IsReadOnly" : true,
+      "Properties": [
+        {
+          "Name" : "inst",
+          "IsRequired" : true,
+          "Title" : "Экземпляр"
+        },
+        {
+          "Name" : "desc",
+          "Title" : "Описание"
+        },
+        {
+          "Name" : "ldName",
+          "Title" : "Название"
+        },
+        {
+          "Name": "LN0.lnType",
+          "Title": "Тип узла LN0",
+          "IsRequired": true,
+          "IsReadOnly" : true
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LN0"
+        },
+        {
+          "Name": "LN",
+          "IsConstant" : true
+        }
+      ]
+    },
+    {
+      "Name": "LN0",
+      "Class": "SCLModel.LN0, SCLModel",
+      "Title" : "Логический узел 0",
+      "IsReadOnly" : true,
+      "Properties": [
+        {
+          "Name": "lnClass",
+          "IsRequired": true,
+          "Title": "Класс",
+          "Fixed": "LLN0",
+          "InvolvedWith": { "Range": [ "LLN0" ] }
+        },
+        {
+          "Name": "lnType",
+          "IsRequired": true,
+          "Title": "Тип"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        }
+      ],
+
+      "Collections": [
+        {
+          "Name": "DOI"
+        },
+        {
+          "Name": "SettingControl",
+          "IsConstant" : true
+        },
+        {
+          "Name": "DataSet"
+        },
+        {
+          "Name": "ReportControl"
+        },
+        {
+          "Name": "LogControl"
+        },
+        {
+          "Name": "GSEControl"
+        },
+        {
+          "Name": "SampledValueControl"
+        }
+      ]
+        },
+      {
+        "Name": "LN",
+        "Class": "SCLModel.tLN, SCLModel",
+      "Title" : "Логический узел",
+        "IsReadOnly":true,
+        "Properties": [
+          {
+            "Name": "prefix",
+            "Title": "Префикс"
+          },
+          {
+            "Name": "lnClass",
+            "IsRequired": true,
+            "Title": "Класс",
+            "InvolvedWith": {
+              "Range": [
+                "CILO",
+                "CPOW",
+                "CSWI",
+                "CMPX",
+                "FMPX",
+                "IHMI",
+                "ITMI",
+                "ITPC",
+                "IHND",
+                "LTMS",
+                "LPDI",
+                "LPDO",
+                "MMXU",
+                "MMTR",
+                "PDIF",
+                "PDIR",
+                "PDIS",
+                "PDOP",
+                "PDUP",
+                "PFRC",
+                "PHAR",
+                "PHIZ",
+                "PIOC",
+                "POPF",
+                "PPAM",
+                "PPTR",
+                "PSCH",
+                "PSDE",
+                "PTHF",
+                "PTOC",
+                "PTOF",
+                "PTOV",
+                "PTRC",
+                "PTTR",
+                "PTUC",
+                "PTUV",
+                "PUPF",
+                "PVOC",
+                "PVPH",
+                "PZSU",
+                "RADR",
+                "RBDR",
+                "RDRE",
+                "RFLO",
+                "RREC",
+                "RSYN",
+                "SOPM",
+                "SSWI",
+                "TCTR",
+                "TVTR",
+                "XCBR",
+                "XSWI",
+                "XDEC",
+                "ZMOT",
+                "ZEXC",
+                "ZVFD"
+              ]
+            }
+          },
+          {
+            "Name": "inst",
+            "IsRequired": true,
+            "Title": "Экземпляр"
+          },
+          {
+            "Name": "lnType",
+            "IsRequired": true,
+            "Title": "Тип"
+          },
+          {
+            "Name": "desc",
+            "Title": "Описание"
+          }
+        ],
+
+        "Collections": [
+          {
+            "Name": "DOI"
+          },
+          {
+            "Name": "DataSet"
+          },
+          {
+            "Name": "ReportControl"
+          },
+          {
+            "Name": "LogControl"
+          }
+        ]
+      },
+      {
+        "Name": "DOI",
+        "Class": "SCLModel.tDOI, SCLModel",
+        "Title" : "Объект данных",
+        "Properties": [
+          {
+            "Name": "name",
+            "Title": "Название",
+            "IsReadOnly": true,
+            "IsRequired": true
+          },
+          {
+            "Name": "desc",
+            "Title": "Описание"
+          }
+        ],
+        "Collections": [
+          {
+            "Name" :  "Items"
+          }
+        ]
+      },
+      {
+        "Name": "SDI",
+        "Class": "SCLModel.tSDI, SCLModel",
+        "Title" : "Под-объект данных",
+        "Properties": [
+          {
+            "Name": "name",
+            "Title": "Название",
+            "IsReadOnly": true,
+            "IsRequired": true
+          },
+          {
+            "Name": "desc",
+            "Title": "Описание"
+          },
+          {
+            "Name": "ix",
+            "Title": "Индекс"
+          }
+        ],
+        "Collections": [
+          {
+            "Name" :  "Items"
+          }
+        ]
+      },
+      {
+        "Name": "DAI",
+        "Class": "SCLModel.tDAI, SCLModel",
+        "Title" : "Атрибут данных",
+        "Properties": [
+          {
+            "Name": "name",
+            "Title": "Название",
+            "IsReadOnly": true,
+            "IsRequired": true
+          },
+          {
+            "Name": "desc",
+            "Title": "Описание"
+          },
+          {
+            "Name": "valKind",
+            "Title": "Вид значения"
+          },
+          {
+            "Name": "sAddr",
+            "Title": "Внутренний адрес"
+          },
+          {
+            "Name": "valImport",
+            "Title": "Импорт"
+          },
+          {
+            "Name": "ix",
+            "Title": "Индекс"
+          }
+        ],
+        "Collections": [
+          {
+            "Name": "Val",
+            "Title": "Значениеы"
+          }
+        ]
+      },
+      {
+        "Name": "Val",
+        "Class": "SCLModel.tVal, SCLModel",
+        "Properties": [
+          {
+            "Name": "Value",
+            "Title": "Значение"
+          },
+          {
+            "Name": "sGroup",
+            "Title": "Группа"
+          }
+        ]
+      },
+    {
+      "Name": "DataSet",
+      "Title": "Набор данных",
+      "Class": "SCLModel.tDataSet, SCLModel",
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        }
+      ]
+    },
+    {
+      "Name": "FCDA",
+      "Title": "Элемент данных",
+      "Class": "SCLModel.tFCDA, SCLModel",
+      "IsReadOnly" : true,
+      "UseReflection": true
+    },
+    {
+      "Name": "ReportControl",
+      "Title": "Отчет",
+      "Class": "SCLModel.tReportControl, SCLModel",
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+          "Name": "datSet",
+          "Title": "Набор данных"
+        },
+        {
+          "Name": "confRev",
+          "Title": "Config Rev",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name" : "intgPd",
+          "Title" : "Integity Period",
+          "Default" : 0 
+        },
+        {
+          "Name" : "buffered",
+          "Title" : "buffered"
+        },
+        {
+          "Name" : "bufTime",
+          "Title" : "Buffer Time",
+          "Default" : 0 
+        },
+        {
+          "Name" : "indexed",
+          "Title" : "Indexed"
+        },
+        {
+          "Name": "TrgOps.dchg",
+          "Title" : "dchg"
+        }, 
+        {
+          "Name": "TrgOps.qchg",
+          "Title" : "qchg"
+        },   
+        {
+          "Name": "TrgOps.dupd",
+          "Title" : "dupd"
+        },
+        {
+          "Name": "TrgOps.period",
+          "Title" : "period",
+          "Default" : true 
+        },  
+        {
+          "Name": "TrgOps.gi",
+          "Title" : "gi",
+          "Default" : true 
+        },
+        {
+          "Name": "OptFields.seqNum",
+          "Title" : "seqNum"
+        }, 
+        {
+          "Name": "OptFields.timeStamp",
+          "Title" : "timeStamp"
+        }, 
+        {
+          "Name": "OptFields.dataSet",
+          "Title" : "dataSet"
+        }, 
+        {
+          "Name": "OptFields.reasonCode",
+          "Title" : "reason"
+        }, 
+        {
+          "Name": "OptFields.dataRef",
+          "Title" : "dataRef"
+        }, 
+        {
+          "Name": "OptFields.entryID",
+          "Title" : "entryID"
+        }, 
+        {
+          "Name": "OptFields.configRef",
+          "Title" : "configRef"
+        }, 
+        {
+          "Name": "OptFields.bufOvfl",
+          "Title" : "bufOvfl",
+          "Default" : true 
+        }        
+      ],
+      "Collections": [
+        {
+          "Name": "RptEnabled",
+          "Title": "Получатели"
+        }
+      ]
+    },
+    {
+      "Name": "GSEControl",
+      "Title": "GOOSE",
+      "Class": "SCLModel.tGSEControl, SCLModel",
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+          "Name": "appID",
+          "Title": "Application ID",
+          "Default" : "NULL"
+        },
+        {
+          "Name": "datSet",
+          "Title": "Набор данных"
+        },
+        {
+          "Name": "confRev",
+          "Title": "Config Rev",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "type",
+          "Title": "GSB Type",
+          "Default" : "GOOSE", 
+          "ColumnWidth" : "*"
+        },
+        {
+          "Name": "fixedOffs",
+          "Title": "Fixed Offset"
+        },
+        {
+          "Name": "securityEnable",
+          "Title": "Security Enabled"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "Private",
+          "IsHidden": true
+        },
+        {
+          "Name": "AnyAttr",
+          "IsHidden": true
+        },
+        {
+          "Name": "IEDName",
+          "IsConstant": true,
+          "Title": "Получатели"
+        }
+      ]
+    },
+    {
+      "Name": "SampledValueControl",
+      "Title": "Мгновенные значения",
+      "Class": "SCLModel.tSampledValueControl, SCLModel",
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+            "Name": "smvID",
+            "Title": "SV ID"
+        },
+        {
+          "Name": "datSet",
+          "Title": "Набор данных"
+        },
+        {
+          "Name": "confRev",
+          "Title": "Config Rev",
+          "IsReadOnly" : true
+        },
+        {
+          "Name" : "multicast",
+          "Title": "Multicast",
+          "Default" : true 
+        },
+        {
+          "Name" : "nofASDU",
+          "Title": "Number of ASDUs",
+          "Default" : 1
+        },
+        {
+            "Name": "smpMod",
+            "Title": "Sample Mode"
+        },
+        {
+          "Name" : "smpRate",
+          "Title": "Sample Rate"
+        },
+        {
+          "Name" : "securityEnable",
+          "Title": "Security Enabled"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "SmvOpts.refreshTime",
+          "Title": "Refresh Time?"
+        },
+        {
+          "Name": "SmvOpts.sampleSynchronized",
+          "Title": "Sample Synchronized?",
+          "Default" : true 
+        },
+        {
+          "Name": "SmvOpts.sampleRate",
+          "Title": "Sample Rate?",
+          "Default" : 80 
+        },
+        {
+          "Name": "SmvOpts.security",
+          "Title": "Security?"
+        },
+        {
+          "Name": "SmvOpts.synchSourceId",
+          "Title": "Synch SourceId?"
+        },
+        {
+          "Name": "SmvOpts.dataSet",
+          "Title": "DataSet?"
+        },
+        {
+          "Name": "SmvOpts.dataRef",
+          "Title": "DataRef?"
+        },
+        {
+          "Name": "SmvOpts.timestamp",
+          "Title": "Timestamp?"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "Private",
+          "IsHidden": true
+        },
+        {
+          "Name": "AnyAttr",
+          "IsHidden": true
+        },
+        {
+          "Name": "IEDName",
+          "IsConstant": true,
+          "Title": "Получатели"
+        }
+      ]
+    },
+    {
+      "Name": "IEDName",
+      "Title": "Получатель",
+      "Class": "SCLModel.tControlWithIEDNameIEDName, SCLModel",
+      "UseReflection": true,
+      "IsReadOnly" : true,
+      "Properties": [
+        {
+          "Name": "Value",
+          "IsRequired": true,
+          "Title": "ИЭУ получатель"
+        }
+      ]
+    },
+    {
+      "Name": "ClientLN",
+      "Title": "Получатель отчета",
+      "Class": "SCLModel.tClientLN, SCLModel",
+      "UseReflection": true,
+      "IsReadOnly" : true,
+      "Properties": [
+        {
+          "Name": "iedName",
+          "IsRequired": true,
+          "Title": "ИЭУ получатель"
+        }
+      ]
+    },
+    {
+      "Name": "LogControl",
+      "Title": "Журнал",
+      "Class": "SCLModel.tLogControl, SCLModel",
+      "UseReflection": true,
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+          "Name": "datSet",
+          "Title": "Набор данных"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+            "Name": "logEna",
+            "Title": "Log Enabled"
+        },
+        {
+            "Name": "intgPd",
+            "Title": "Integrity Period"
+        },
+        {
+            "Name": "bufTime",
+            "Title": "Buffer Time"
+        },
+        {
+            "Name": "reasonCode",
+            "Title": "reasonCode"
+        },
+        {
+            "Name": "TrgOps.dchg",
+            "Title": "dchg"
+        },
+        {
+            "Name": "TrgOps.qchg",
+            "Title": "qchg"
+        },
+        {
+            "Name": "TrgOps.dupd",
+            "Title": "dupd"
+        },
+        {
+            "Name": "TrgOps.period",
+            "Title": "period"
+        },
+        {
+            "Name": "TrgOps.gi",
+            "Title": "gi"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "Private",
+          "IsHidden": true
+        },
+        {
+          "Name": "AnyAttr",
+          "IsHidden": true
+        }
+      ]
+    },
+    {
+      "Name": "TrgOps",
+      "Title": "Триггеры управления",
+      "Class": "SCLModel.tTrgOps, SCLModel",
+      "UseReflection": true
+    },
+    {
+      "Name": "RptEnabled",
+      "Title": "Подписки",
+      "Class": "SCLModel.tRptEnabled, SCLModel",
+      "UseReflection": true,
+      "Properties": [
+        {
+          "Name": "max",
+          "Title":  "Макс. подписок",
+          "IsReadOnly": true
+        },
+        {
+          "Name": "desc",
+          "Title":  "Описание"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "ClientLN",
+          "IsConstant": true,
+          "Title": "Узлы получаетели"
+        }
+      ]
+    },
+    {
+      "Name": "OptFields",
+      "Title": "Параметры отчета",
+      "Class": "SCLModel.tReportControlOptFields, SCLModel",
+      "UseReflection": true
+    },
+    {
+      "Name": "SettingControl",
+      "Title": "Группы уставок",
+      "Class": "SCLModel.tSettingControl, SCLModel",
+      "Properties": [
+        {
+          "Name": "numOfSGs",
+          "Title": "Количество групп"
+        },
+        {
+          "Name": "actSG",
+          "Title": "Выбранная группа"
+        }
+      ]
+    },
+    {
+      "Name": "Inputs",
+      "Title": "Входы",
+      "Class": "SCLModel.tInputs, SCLModel",
+      "Properties": [
+        {
+          "Name": "desc",
+          "Title":  "Описание"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "ExtRef",
+          "Title": "Входные сигналы"
+        }
+      ]
+    },
+    {
+      "Name": "ExtRef",
+      "Class": "SCLModel.tExtRef, SCLModel",
+      "Title": "Внешняя ссылка",
+      "UseReflection": true,
+      "IsReadOnly": true
+    },
+    {
+      "Name": "{http://www.vniir.ru/SCADA/SCLTemplate}VNIIRTemplate",
+      "Class": "SCLModel.VNIIRTemplate, SCLModel",
+      "Collections": [
+        {
+          "Name": "Variable",
+          "Title": "Переменные"
+        }
+      ]
+    },
+    {
+      "Name": "{http://www.vniir.ru/SCADA/SCLTemplate}VNIIRVariable",
+      "Class": "SCLModel.VNIIRTemplateVariable, SCLModel",
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+          "Name": "Value",
+          "Title": "Значение"
+        }
+      ]
+    }
+  ]
+}

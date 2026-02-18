@@ -1,0 +1,958 @@
+{
+  "Kind": "ssd",
+  "Title": "Схема SSD",
+  "FileModel": "Editable",
+  "Namespace": "http://www.iec.ch/61850/2003/SCL",
+  "Annotations": [
+    {
+      "Name": "SCL",
+      "Class": "SCLModel.SCL, SCLModel",
+      "Title": "Конфигурация МЭК 61850",
+      "Properties": [
+        {
+          "Name": "Header.id",
+          "Title": "id",
+          "IsRequired" : true
+        },
+        {
+          "Name": "Header.TextString",
+          "Title": "текст"
+        },
+        {
+          "Name" : "Version",
+          "IsReadOnly" : true,
+          "Title": "Редакция SCL"
+        },
+        {
+          "Name": "version",
+          "IsReadOnly" : true,
+          "Default": "2007"
+        },
+        {
+          "Name": "revision",
+          "IsReadOnly" : true,
+          "Default": "B"
+        },
+        {
+          "Name": "release",
+          "IsReadOnly" : true,
+          "Default": 4
+        },
+        {
+          "Name": "Header.version",
+          "Title": "Версия документа"
+        },
+        {
+          "Name": "Header.revision",
+          "Title": "Модификация"
+        },
+        {
+          "Name": "Header.toolID",
+          "Title": "Инструмент",
+          "IsReadOnly" : true
+        }
+
+      ],
+      "Collections": [
+        {
+          "Name": "Substation",
+          "Title": "Подстанции"
+        },
+        {
+          "Name": "Line",
+          "Title": "Линии"
+        },
+        {
+          "Name": "Process",
+          "Title": "Процессы"
+        }
+      ]
+    },
+    {
+      "Name": "Substation",
+      "Class": "SCLModel.tSubstation, SCLModel",
+      "Title": "Подстанция",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "VoltageLevel",
+          "Title": "РУ"
+        },
+        {
+          "Name": "PowerTransformer",
+          "Title": "Трансформаторы"
+        },
+        {
+          "Name": "GeneralEquipment",
+          "Title": "Дополнительно"
+        },
+        {
+          "Name": "LNode",
+          "Title": "Управлениев"
+        },
+        {
+          "Name": "Function",
+          "Title": "Функции"
+        }
+      ]
+    },
+    {
+      "Name": "VoltageLevel",
+      "Class": "SCLModel.tVoltageLevel, SCLModel",
+      "Title": "РУ",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+           "Name": "Voltage.Value",
+           "Title": "Напряжение, кВ",
+           "IsRequired" : true
+        },
+        {
+           "Name" : "nomFreq",
+          "Title": "Частота сети, Гц",
+          "Default" : 50
+        },
+        {
+           "Name" : "numPhases",
+          "Title": "Количество фаз",
+          "Default" : 3
+        },
+        {
+          "Name": "x",
+          "Title": "X"
+        },
+        {
+          "Name": "y",
+          "Title": "Y"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "Bay",
+          "Title": "Ячейки"
+        },
+        {
+          "Name": "PowerTransformer",
+          "Title": "Трансформаторы"
+        },
+        {
+          "Name": "GeneralEquipment",
+          "Title": "Дополнительно"
+        },
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "Function",
+          "Title": "Функции"
+        }
+      ]
+    },
+    {
+      "Name": "Voltage",
+      "Class": "SCLModel.tVoltage, SCLModel",
+      "Title": "Напряжение",
+      "Properties": [
+        {
+          "Name": "unit",
+          "Title": "Величина",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "multiplier",
+          "Title": "Множитель",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "Value",
+          "Title": "Значение"
+        }
+      ]
+    },
+
+    {
+      "Name" : "{http://www.iec.ch/61850/2003/SCLcoordinates}ABus",
+      "Class": "SCLModel.tBay, SCLModel",
+      "Title": "Шина",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "ConnectivityNode[0].x",
+          "Title": "x-Соединение"
+        },
+        {
+          "Name": "ConnectivityNode[0].y",
+          "Title": "y-Соединение"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "Function",
+          "Title": "Функции"
+        },
+        {
+          "Name": "ConnectivityNode",
+          "Title": "Соединения"
+        }
+      ]
+    },
+
+    {
+      "Name": "Bay",
+      "Class": "SCLModel.tBay, SCLModel",
+      "Title": "Ячейка",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "x",
+          "Title": "X"
+        },
+        {
+          "Name": "y",
+          "Title": "Y"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "ConductingEquipment",
+          "Title": "Оборудование"
+        },
+        {
+          "Name": "PowerTransformer",
+          "Title": "Трансформаторы"
+        },
+        {
+          "Name": "GeneralEquipment",
+          "Title": "Дополнительно"
+        },
+        {
+          "Name": "ConnectivityNode",
+          "Title": "Проводник"
+        },
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "Function",
+          "Title": "Функции"
+        }
+      ]
+    },
+    {
+      "Name": "ConductingEquipment",
+      "Class": "SCLModel.tConductingEquipment, SCLModel",
+      "Title": "Силовое оборудование",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "x",
+          "Title": "X"
+        },
+        {
+          "Name": "y",
+          "Title": "Y"
+        },
+        {
+          "Name": "dir",
+          "Title": "Направление"
+        },
+        {
+          "Name": "type",
+          "Title": "Тип",
+          "IsRequired": true
+        },
+        {
+          "Name": "virtual",
+          "Title": "Виртуальное"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "Terminal",
+          "Title": "Контакты"
+        },
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "SubEquipment",
+          "Title": "Доп. Оборудование"
+        }
+      ]
+    },
+    {
+      "Name": "SubEquipment",
+      "Class": "SCLModel.tSubEquipment, SCLModel",
+      "Title": "Доп. оборудование",
+      "Properties" : [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "phase",
+          "Title": "Фаза"
+        },
+        {
+          "Name": "virtual",
+          "Title": "Виртуальное"
+        }
+      ]
+
+    },
+    {
+      "Name": "PowerTransformer",
+      "Class": "SCLModel.tPowerTransformer, SCLModel",
+      "Title": "Силовой трансформатор",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование"
+        },
+        {
+          "Name": "type",
+          "Title": "Тип",
+          "Fixed": "PTR"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "x",
+          "Title": "X"
+        },
+        {
+          "Name": "y",
+          "Title": "Y"
+        },
+        {
+          "Name": "dir",
+          "Title": "Направление"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "TransformerWinding",
+          "Title": "Обмотки"
+        },
+        {
+          "Name": "LNode",
+          "Title": "Функции"
+        },
+        {
+          "Name": "SubEquipment",
+          "Title": "Доп. Оборудование"
+        },
+        {
+          "Name": "EqFunction",
+          "Title": "Функции"
+        }
+      ]
+    },
+    {
+      "Name": "TransformerWinding",
+      "Class": "SCLModel.tTransformerWinding, SCLModel",
+      "Title": "Обмотка",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "type",
+          "Title": "Тип",
+          "IsReadOnly": true
+        },
+        {
+          "Name": "TapChangerX",
+          "Title": "Регулирование",
+          "AccessorClass" : "ABSWorks.CustomEditors.TapChangerProperty, ABSWorks.CustomEditors"
+        },
+        {
+          "Name": "Terminal[0].neutralPoint",
+          "Title" : "Нейтраль"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "Terminal",
+          "Title": "Контакты"
+        },
+        {
+          "Name": "TapChanger",
+          "Title": "Переключение отпаек"
+        },
+        {
+          "Name": "SubEquipment",
+          "Title": "Доп. Оборудование"
+        },
+        {
+          "Name": "EqFunction",
+          "Title": "Функции"
+        },
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        }
+      ]
+    },
+    {
+      "Name": "TapChanger",
+      "Class": "SCLModel.tTapChanger, SCLModel",
+      "Title": "Переключение отпаек",
+      "UseReflection": true,
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Функции"
+        },
+        {
+          "Name": "SubEquipment",
+          "Title": "Доп. Оборудование"
+        },
+        {
+          "Name": "EqFunction",
+          "Title": "Функции"
+        },
+        {
+          "Name": "Private",
+          "IsHidden": true
+        },
+        {
+          "Name": "AnyAttr",
+          "IsHidden": true
+        }
+      ]
+    },
+    {
+      "Name": "Terminal",
+      "Class": "SCLModel.tTerminal, SCLModel",
+      "Title": "Вывод",
+      "UseReflection": true,
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование"
+        },
+        {
+          "Name": "connectivityNode",
+          "Title": "Соединение",
+          "IsReadOnly": "true"
+        },
+        {
+          "Name": "substationName",
+          "Title": "Подстанция",
+          "IsReadOnly": "true"
+        },
+        {
+          "Name": "voltageLevelName",
+          "Title": "РУ",
+          "IsReadOnly": "true"
+        },
+        {
+          "Name": "bayName",
+          "Title": "Ячейка",
+          "IsReadOnly": "true"
+        },
+        {
+          "Name": "cNodeName",
+          "Title": "Имя соединения",
+          "IsReadOnly": "true"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "Private",
+          "IsHidden": true
+        },
+        {
+          "Name": "AnyAttr",
+          "IsHidden": true
+        }
+      ]
+    },
+    {
+      "Name": "ConnectivityNode",
+      "Class": "SCLModel.tConnectivityNode, SCLModel",
+      "Title": "Соединение",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "IsReadOnly": "true",
+          "Default" : "CN1"
+        },
+        {
+          "Name": "pathName",
+          "Title": "Путь",
+          "IsReadOnly": "true",
+          "Default" : "CN1"
+        },
+        {
+          "Name": "x",
+          "Title": "X"
+        },
+        {
+          "Name": "y",
+          "Title": "Y"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Функции"
+        }
+      ]
+    },
+    {
+      "Name": "LNode",
+      "Class": "SCLModel.tLNode, SCLModel",
+      "Title": "Привязка логического узла",
+      "Properties": [
+        {
+          "Name": "iedName",
+          "Title": "ИЭУ",
+          "IsReadOnly": "true",
+          "Default" : "None"
+        },
+        {
+          "Name": "ldInst",
+          "Title": "ЛУ",
+          "IsReadOnly": "true"
+        },
+        {
+          "Name": "prefix",
+          "Title": "префикс"
+        },
+        {
+          "Name": "lnClass",
+          "IsRequired": true,
+          "Title": "класс узла",
+          "InvolvedWith": {
+            "InKey" : 1,
+            "Range": [
+              "CILO",
+              "CPOW",
+              "CSWI",
+              "CMPX",
+              "FMPX",
+              "IHMI",
+              "ITMI",
+              "ITPC",
+              "IHND",
+              "LTMS",
+              "LPDI",
+              "LPDO",
+              "MMXU",
+              "MMTR",
+              "PDIF",
+              "PDIR",
+              "PDIS",
+              "PDOP",
+              "PDUP",
+              "PFRC",
+              "PHAR",
+              "PHIZ",
+              "PIOC",
+              "POPF",
+              "PPAM",
+              "PPTR",
+              "PSCH",
+              "PSDE",
+              "PTHF",
+              "PTOC",
+              "PTOF",
+              "PTOV",
+              "PTRC",
+              "PTTR",
+              "PTUC",
+              "PTUV",
+              "PUPF",
+              "PVOC",
+              "PVPH",
+              "PZSU",
+              "RADR",
+              "RBDR",
+              "RDRE",
+              "RFLO",
+              "RREC",
+              "RSYN",
+              "SOPM",
+              "SSWI",
+              "TCTR",
+              "TVTR",
+              "XCBR",
+              "XSWI",
+              "XDEC",
+              "ZMOT",
+              "ZEXC",
+              "ZVFD"
+            ]
+          }
+
+        },
+        {
+          "Name": "lnInst",
+          "Title": "номер"
+        },
+        {
+          "Name": "lnType",
+          "Title": "тип узла",
+          "IsReadOnly": "true"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        }
+      ]
+    },
+    {
+      "Name": "Function",
+      "Class": "SCLModel.tFunction, SCLModel",
+      "Title": "Функция",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "type",
+          "Title": "Тип"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "SubFunction",
+          "Title": "Под-Функции"
+        },
+        {
+          "Name": "ConductingEquipment",
+          "Title": "Основное Оборудование"
+        },
+        {
+          "Name": "GeneralEquipment",
+          "Title": "Доп. Оборудование"
+        }
+
+      ]
+    },
+    {
+      "Name": "SubFunction",
+      "Class": "SCLModel.tSubFunction, SCLModel",
+      "Title": "Под-функция",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "type",
+          "Title": "Тип"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "SubFunction",
+          "Title": "Под-Функции"
+        },
+        {
+          "Name": "ConductingEquipment",
+          "Title": "Основное Оборудование"
+        },
+        {
+          "Name": "GeneralEquipment",
+          "Title": "Доп. Оборудование"
+        }
+
+      ]
+    },
+    {
+      "Name": "GeneralEquipment",
+      "Class": "SCLModel.tGeneralEquipment, SCLModel",
+      "Title": "Доп. Оборудование",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "type",
+          "Title": "Тип"
+        },
+        {
+          "Name": "virtual",
+          "Title": "Виртуальное"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "EqFunction",
+          "Title": "Функции"
+        }
+      ]
+    },
+    {
+      "Name": "EqFunction",
+      "Class": "SCLModel.tEqFunction, SCLModel",
+      "Title": "Функция",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "type",
+          "Title": "Тип"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "EqSubFunction",
+          "Title": "Под-Функции"
+        },
+        {
+          "Name": "GeneralEquipment",
+          "Title": "Доп. Оборудование"
+        }
+
+      ]
+    },
+    {
+      "Name": "Process",
+      "Class": "SCLModel.tProcess, SCLModel",
+      "Title": "Процесс",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "type",
+          "Title": "Тип"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "ConductingEquipment",
+          "Title": "Оборудование"
+        },
+        {
+          "Name": "Substation",
+          "Title": "Подстанции"
+        },
+        {
+          "Name": "Line",
+          "Title": "Линии"
+        },
+        {
+          "Name": "Process",
+          "Title": "Процессы"
+        }
+
+      ]
+    },
+    {
+      "Name": "Line",
+      "Class": "SCLModel.tLine, SCLModel",
+      "Title": "Линия",
+      "Properties": [
+        {
+          "Name": "name",
+          "Title": "Наименование",
+          "InvolvedWith": {
+            "MinLength": 1,
+            "Required": true,
+            "Primary": true
+          }
+        },
+        {
+          "Name": "type",
+          "Title": "Тип"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+           "Name": "Voltage.Value",
+           "Title": "Уровень напряжения",
+           "IsRequired" : true
+        },
+        {
+           "Name" : "nomFreq",
+          "Title": "Номинальная частота",
+          "Default" : 50
+        },
+        {
+           "Name" : "numPhases",
+          "Title": "Количество фаз",
+          "Default" : 3
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "LNode",
+          "Title": "Управление"
+        },
+        {
+          "Name": "ConductingEquipment",
+          "Title": "Оборудование"
+        },
+        {
+          "Name": "ConnectivityNode",
+          "Title": "Соединения"
+        }
+      ]
+    }
+
+  ]
+
+}

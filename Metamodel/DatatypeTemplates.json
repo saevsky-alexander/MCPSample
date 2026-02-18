@@ -1,0 +1,292 @@
+{
+    "Kind": "DataTypeTemplates",
+    "Title": "Схема ЛВС",
+    "Namespace": "http://www.iec.ch/61850/2003/SCL", 
+    "Annotations": 
+    [      
+        {
+            "Name": "DataTypeTemplates",
+            "Title": "Шаблоны типов данных",
+            "Class": "SCLModel.tDataTypeTemplates, SCLModel",
+            "Collections": [
+                {
+                "Name": "LNodeType",
+                "IsConstant" : true,
+                "Title": "Типы узлов"
+                },
+                {
+                "Name": "DOType",
+                "IsConstant" : true,
+                "Title": "Типы объектов данных"
+                },
+                {
+                "Name": "DAType",
+                "IsConstant" : true,
+                "Title": "Типы атрибутов"
+                },
+                {
+                "Name": "EnumType",
+                "IsConstant" : true,
+                "Title": "Перечислимые типы"
+                }
+            ]
+        },
+        {
+            "Name": "DO",
+            "Title": "Объект данных",
+            "Class": "SCLModel.tDO, SCLModel",
+            "IsReadOnly" : true,
+            "Properties": [
+                {
+                "Name": "name",
+                "IsRequired": true,
+                "Title": "Название"
+                },
+                {
+                "Name": "type",
+                "Title": "Тип"
+                },
+                {
+                "Name": "desc",
+                "Title": "Описание"
+                }
+            ]
+        },
+        {
+            "Name": "SDO",
+            "Title": "Объект данных",
+            "Class": "SCLModel.tSDO, SCLModel",
+            "IsReadOnly" : true,
+            "Properties": [
+              {
+                "Name": "name",
+                "IsRequired": true,
+                "Title": "Название"
+              },
+              {
+                "Name": "type",
+                "Title": "Тип"
+              },
+              {
+                "Name": "count",
+                "Title": "Размерность"
+              },
+              {
+                "Name": "desc",
+                "Title": "Описание"
+              }
+            ]
+        },
+        {
+            "Name": "DA",
+            "Title": "Объект данных",
+            "Class": "SCLModel.tDA, SCLModel",
+            "IsReadOnly" : true,
+            "Properties": [
+            {
+              "Name": "name",
+              "IsRequired": true,
+              "Title": "Название"
+            },
+            {
+              "Name": "fc",
+              "Title": "fc",
+              "IsRequired": true
+            },
+            {
+              "Name": "bType",
+              "Title": "Базовый тип"
+            },
+            {
+              "Name": "type",
+              "Title": "Тип"
+            },
+            {
+              "Name": "count",
+              "Title": "Размерность"
+            },
+            {
+              "Name": "valKind",
+              "Title": "Роль значения"
+            },
+            {
+                "Name" : "dchg"
+            },
+            {
+                "Name" : "qchg"
+            },
+            {
+                "Name" : "dupd"
+            },
+            {
+              "Name": "desc",
+              "Title": "Описание"
+            }
+            ],
+            "Collections": [
+              {
+                "Name": "Val",
+                "Title": "Значения" 
+              }
+            ] 
+        },
+        {
+            "Name": "BDA",
+            "Title": "Объект данных",
+            "Class": "SCLModel.tBDA, SCLModel",
+            "UseReflection": true,
+            "IsReadOnly" : true,
+            "Properties": [
+            {
+              "Name": "name",
+              "IsRequired": true,
+              "Title": "Название"
+            },
+            {
+              "Name": "type",
+              "Title": "Тип"
+            },
+            {
+              "Name": "bType",
+              "Title": "Тип"
+            },
+            {
+              "Name": "count",
+              "Title": "Тип"
+            },
+            {
+              "Name": "desc",
+              "Title": "Описание"
+            }
+          ]
+        },
+        {
+          "Name": "LNodeType",
+          "Title": "Тип логического узла",
+          "Class": "SCLModel.tLNodeType, SCLModel",
+          "IsReadOnly" : true,
+          "Properties": [
+            {
+              "Name": "id",
+              "IsRequired": true,
+              "Title": "Название"
+            },
+            {
+              "Name": "lnClass",
+              "Title": "Класс"
+            },
+            {
+              "Name": "desc",
+              "Title": "Описание"
+            }
+          ],
+          "Collections": [
+            {
+              "Name": "DO",
+              "IsConstant" : true,
+              "Title": "Объекты данных"
+            }
+          ]
+        },
+        {
+            "Name": "DOType",
+            "Title": "Тип объекта данных",
+            "Class": "SCLModel.tDOType, SCLModel",
+            "IsReadOnly" : true,
+            "Properties": [
+              {
+                "Name": "id",
+                "IsRequired": true,
+                "Title": "Название"
+              },
+              {
+                "Name": "iedType",
+                "Title": "Тип ИЭУ"
+              },
+              {
+                "Name": "cdc",
+                "Title": "Класс"
+              },
+              {
+                "Name": "desc",
+                "Title": "Описание"
+              }
+            ],
+            "Collections": [
+              {
+                "Name": "Items",
+                "IsConstant" : true,
+                "Title": "Вложенные данные"
+              }
+            ]
+        },
+        {
+            "Name": "DAType",
+            "Title": "Тип атрибута данных",
+            "Class": "SCLModel.tDAType, SCLModel",
+            "IsReadOnly" : true,
+            "Properties": [
+              {
+                "Name": "id",
+                "IsRequired": true,
+                "Title": "Название"
+              },
+              {
+                "Name": "desc",
+                "Title": "Описание"
+              }
+            ],
+            "Collections": [
+              {
+                "Name": "BDA",
+                "IsConstant" : true,
+                "Title": "Вложенные атрибуты"
+              }
+            ]
+        },
+        {
+            "Name": "EnumType",
+            "Title": "Тип атрибута данных",
+            "Class": "SCLModel.tEnumType, SCLModel",
+            "IsReadOnly" : true,
+            "Properties": [
+              {
+                "Name": "id",
+                "IsRequired": true,
+                "Title": "Название"
+              },
+              {
+                "Name": "desc",
+                "Title": "Описание"
+              }
+            ],
+            "Collections": [
+              {
+                "Name": "EnumVal",
+                "IsConstant" : true,
+                "Title": "Значения"
+              }
+            ]  
+        },
+        {
+            "Name": "EnumVal",
+            "Title": "Значение",
+            "Class": "SCLModel.tEnumVal, SCLModel",
+            "IsReadOnly" : true,
+            "Properties": [
+              {
+                "Name": "Value",
+                "Title": "Название"
+              },
+              {
+                "Name": "ord",
+                "Title": "Номер"
+              },
+              {
+                "Name": "desc",
+                "Title": "Описание"
+              }
+            ]
+        }
+    ]
+}

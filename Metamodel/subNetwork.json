@@ -1,0 +1,379 @@
+{
+  "Kind": "subNetwork",
+  "Title": "Схема ЛВС",
+  "Namespace": "http://www.iec.ch/61850/2003/SCL", 
+  "TypeAliases" :
+  [ {"Name" : "ADDR", "Type" : "ABSWorks.CustomEditors.AddressTypedProperty, ABSWorks.CustomEditors"} ],
+  "Annotations": [
+    {
+      "Name": "SCL",
+      "Class": "SCLModel.SCL, SCLModel",
+      "Title": "Описание",
+      "Properties": [
+        {
+          "Name": "Header.id",
+          "Title": "id",
+          "IsRequired" : true
+        },
+        {
+          "Name": "Header.TextString",
+          "Title": "текст"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "SubNetwork",
+          "Title": "Подсети",
+          "AccessorClass": "ABSWorks.CustomEditors.SubNetworkAccessor, ABSWorks.CustomEditors",
+          "Types": [ "SCLModel.tSubNetwork, SCLModel" ]
+        }
+      ]
+    },
+    {
+      "Name": "SubNetwork",
+      "Class": "SCLModel.tSubNetwork, SCLModel",
+      "Title": "Подсеть",
+      "Properties": [
+        {
+          "Name": "name",
+          "IsRequired": true,
+          "Title": "Название"
+        },
+        {
+          "Name": "desc",
+          "Title": "Описание"
+        },
+        {
+          "Name": "type",
+          "Title": "Тип"
+        },
+        {
+          "Name": "BitRate.Value",
+          "Title": "Битов/сек",
+          "Type": "System.Decimal"
+        },
+        {
+          "Name": "PackageRate",
+          "IsCustom" : true,
+          "Title": "Пакетов/сек",
+          "Type": "System.Decimal"
+        }
+      ],
+      "Collections": [
+        {
+          "Name": "ConnectedAP",
+          "Title": "Точки доступа",
+          "IsConstant" : true
+        }
+      ]
+    },
+    {
+      "Name": "ConnectedAP",
+      "Class": "SCLModel.tConnectedAP, SCLModel",
+      "Title": "Точка доступа",
+      "Properties": [
+        {
+          "Name": "iedName",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "apName",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "MAC-Address",
+          "Title": "MAC-Address",
+          "AccessorClass": "ADDR(MAC-Address,SCLModel.tP_MACAddress#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}"
+          }
+        },
+        {
+          "Name": "IP-GATEWAY",
+          "Title": "IP-GATEWAY",
+          "AccessorClass": "ADDR(IP-GATEWAY,SCLModel.tP_IPGATEWAY#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
+          }
+        },
+        {
+          "Name": "IP-SUBNET",
+          "Title": "IP-SUBNET",
+          "AccessorClass": "ADDR(IP-SUBNET,SCLModel.tP_IPSUBNET#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
+          }
+        },
+        {
+          "Name": "IP",
+          "Title": "IP",
+          "AccessorClass": "ADDR(IP,SCLModel.tP_IP#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
+          }
+        },
+        {
+          "Name": "OSI-AE-Invoke",
+          "Title": "OSI-AE-Invoke",
+          "AccessorClass": "ADDR(OSI-AE-Invoke,SCLModel.tP_OSIAEInvoke#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9]+",
+            "MaxLength": 5
+          }
+        },
+        {
+          "Name": "OSI-AE-Qualifier",
+          "Title": "OSI-AE-Qualifier",
+          "AccessorClass": "ADDR(OSI-AE-Qualifier,SCLModel.tP_OSIAEQualifier#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9]+",
+            "MaxLength": 5
+          }
+        },
+        {
+          "Name": "OSI-AP-Invoke",
+          "Title": "OSI-AP-Invoke",
+          "AccessorClass": "ADDR(OSI-AP-Invoke,SCLModel.tP_OSIAPInvoke#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9]+",
+            "MaxLength": 5
+          }
+        },
+        {
+          "Name": "OSI-AP-Title",
+          "Title": "OSI-AP-Title",
+          "AccessorClass": "ADDR(OSI-AP-Title,SCLModel.tP_OSIAPTitle#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,,]+"
+          }
+        },
+        {
+          "Name": "OSI-PSEL",
+          "Title": "OSI-PSEL",
+          "AccessorClass": "ADDR(OSI-PSEL,SCLModel.tP_OSIPSEL#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]+"
+          }
+        },
+        {
+          "Name": "OSI-SSEL",
+          "Title": "OSI-SSEL",
+          "AccessorClass": "ADDR(OSI-SSEL,SCLModel.tP_OSISSEL#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]+"
+          }
+        },
+        {
+          "Name": "OSI-TSEL",
+          "Title": "OSI-TSEL",
+          "AccessorClass": "ADDR(OSI-TSEL,SCLModel.tP_OSITSEL#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]+"
+          }
+        },
+        {
+          "Name": "OSI-NSAP",
+          "Title": "OSI-NSAP",
+          "AccessorClass": "ADDR(OSI-NSAP,SCLModel.tP_OSINSAP#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]+"
+          }
+        },
+        {
+          "Name": "SNTP-Port",
+          "Title": "SNTP-Port",
+          "AccessorClass": "ADDR(SNTP-Port,SCLModel.tP_SNTPPort#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9]{1,5}"
+          }
+        },
+        {
+          "Name": "MMS-Port",
+          "Title": "MMS-Port",
+          "AccessorClass": "ADDR(MMS-Port,SCLModel.tP_MMSPort#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9]{1,5}"
+          }
+        },
+        {
+          "Name": "Workload",
+          "Title": "Загрузка сети",
+          "IsCustom": true,
+          "Type": "System.Integer"
+        }
+      ],
+
+      "Collections": [
+        {
+          "Name": "GSE",
+          "Title": "GOOSE",
+          "IsConstant" : true
+        },
+        {
+          "Name": "SMV",
+          "Title": "Измерения",
+          "IsConstant" : true
+        },
+        {
+          "Name": "PhysConn",
+          "Title": "NIC"
+        }
+      ]
+    },
+    {
+      "Name": "GSE",
+      "Class": "SCLModel.tGSE, SCLModel",
+      "Title": "GOOSE",
+      "Properties": [
+        {
+          "Name" : "ldInst",
+          "IsReadOnly" : true
+        },
+        {
+          "Name" : "cbName",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "MAC-Address",
+          "Title": "MAC-Address",
+          "AccessorClass": "ADDR(MAC-Address,SCLModel.tP_MACAddress#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}"
+          },
+          "Default" : "01-0C-CD-01-00-00" 
+        },
+        {
+          "Name": "APPID",
+          "Title": "APPID",
+          "AccessorClass": "ADDR(APPID,SCLModel.tP_APPID#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]{4}"
+          },
+          "Default" : "0000"
+        },
+        {
+          "Name": "VLAN-PRIORITY",
+          "Title": "Приоритет VLAN",
+          "AccessorClass": "ADDR(VLAN-PRIORITY,SCLModel.tP_VLANPRIORITY#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-7]"
+          },
+          "Default" : "4"
+        },
+        {
+          "Name": "VLAN-ID",
+          "Title": "Номер VLAN",
+          "AccessorClass": "ADDR(VLAN-ID,SCLModel.tP_VLANID#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]{3}"
+          },
+          "Default" : "000"
+        },
+        {
+          "Name": "MinTimeValue",
+          "Title": "Минимальное время",
+          "Type": "System.Decimal",
+          "InvolvedWith": {
+            "Pattern": "[0-9]*"
+          },
+          "Default" : 4
+        },
+        {
+          "Name": "MaxTimeValue",
+          "Title": "Максимальное время",
+          "Type": "System.Decimal",
+          "InvolvedWith": {
+            "Pattern": "[0-9]*"
+          },
+          "Default" : 1000
+        }
+      ]
+    },
+    {
+      "Name": "SMV",
+      "Class": "SCLModel.tSMV, SCLModel",
+      "Title": "Измерения",
+      "Properties": [
+        {
+          "Name" : "ldInst",
+          "IsReadOnly" : true
+        },
+        {
+          "Name" : "cbName",
+          "IsReadOnly" : true
+        },
+        {
+          "Name": "MAC-Address",
+          "Title": "MAC-Address",
+          "AccessorClass": "ADDR(MAC-Address,SCLModel.tP_MACAddress#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}\\-[0-9,A-F]{2}"
+          },
+          "Default" : "01-0C-CD-41-00-00"
+        },
+        {
+          "Name": "APPID",
+          "Title": "APPID",
+          "AccessorClass": "ADDR(APPID,SCLModel.tP_APPID#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]{4}"
+          },
+          "Default" : "0000"
+        },
+        {
+          "Name": "VLAN-PRIORITY",
+          "Title": "Приоритет VLAN",
+          "AccessorClass": "ADDR(VLAN-PRIORITY,SCLModel.tP_VLANPRIORITY#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-7]"
+          },
+          "Default" : "4"
+        },
+        {
+          "Name": "VLAN-ID",
+          "Title": "Номер VLAN",
+          "AccessorClass": "ADDR(VLAN-ID,SCLModel.tP_VLANID#SCLModel)",
+          "InvolvedWith": {
+            "Pattern": "[0-9,A-F]{3}"
+          },
+          "Default" : "000"
+        }
+      ]
+    },
+    {
+      "Name": "PhysConn",
+      "Class": "SCLModel.tPhysConn, SCLModel",
+      "Title": "Сетевой разъём",
+      "Properties": [
+        {
+          "Name": "type",
+          "Title": "Тип соединения",
+          "InvolvedWith": {
+            "Range": [ "Connection", "RedConn" ]
+          }
+        },
+        {
+          "Name": "Port",
+          "Title": "Порт",
+          "AccessorClass": "ADDR(Port,SCLModel.tP_PhysConn#SCLModel,P)"
+        },
+        {
+          "Name": "Plug",
+          "Title": "Тип разъёма",
+          "AccessorClass": "ADDR(Plug,SCLModel.tP_PhysConn#SCLModel,P)",
+          "InvolvedWith": {
+            "Range": [ "RJ45", "LC", "LC-LC", "ST", "ST-ST", "SC", "MU", "M12" ]
+          }
+        },
+        {
+          "Name": "Type",
+          "Title": "Тип",
+          "AccessorClass": "ADDR(Type,SCLModel.tP_PhysConn#SCLModel,P)",
+          "InvolvedWith": {
+            "Range": [ "10Base-T", "100Base-T", "1000Base-T", "10Base-FX", "100Base-FX", "1000Base-FX", "WLAN" ]
+          }
+        }
+      ]
+    }
+  ]
+}

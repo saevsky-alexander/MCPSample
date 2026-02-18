@@ -1,23 +1,35 @@
 ﻿using Microsoft.Extensions.AI;
 using OllamaSharp;
-using ModelContextProtocol.Client;
-using ModelContextProtocol.Protocol;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
+using System.Diagnostics;
+using System.Text.Json;
+using System.Numerics.Tensors;
+using System.Text.Json.Nodes; // Для расчета схожести
 
+string llmId = "yandex/YandexGPT-5-Lite-8B-instruct-GGUF:latest"; // TODO should be configurable
+
+var ollamaClient = new OllamaApiClient(new Uri("http://localhost:11434/"), llmId);
 // IChatClient chatClient =
 //     new OllamaApiClient(new Uri("http://localhost:11434/"), "phi3:mini");
-IChatClient chatClient = new ChatClientBuilder(
-
-    new OllamaApiClient(new Uri("http://localhost:11434/"), "gpt-oss:20b"))
+IChatClient chatClient = new ChatClientBuilder(ollamaClient)
     .UseFunctionInvocation()
     .UseLogging()
     .Build(new MCPSample.P1());
+
+Debug.Assert(File.Exists("./Metamodel/ssd.json"));
+JsonDocument? doc = null;
+using (var stm = File.OpenRead("./Metamodel/ssd.json"))
+{
+    doc = JsonDocument.Parse(stm);
+}
+var ann = doc.RootElement.GetProperty("Annotations");
+// foreach (var item in (JsonArray) ann)
+
 
 // TODO use service providing ILoggerFactory
 
 // Create the MCP client
 // Configure it to start and connect to your MCP server.
+#if false
 McpClient mcpClient = await McpClient.CreateAsync(
     new StdioClientTransport(new()
     {
@@ -31,13 +43,23 @@ foreach (var tool in tools)
 {
     Console.WriteLine($"Connected to server with tools: {tool.Name}");
 }
+#endif
 
 var options = new ChatOptions 
 { 
     MaxOutputTokens = 1000, 
     AllowMultipleToolCalls = true, 
     ModelId = "gpt-oss:20b",  
-    Tools = [..tools]
+    Instructions = File.ReadAllText("MetamodelInstruction.md"),
+    // Tools = [..tools]
+    Tools = [
+        AIFunctionFactory.Create(RandomNumberTools.GetRandomNumber, "get_random_number"),
+        AIFunctionFactory.Create(RandomNumberTools.GetRandomNumber, "get_random_number"),
+        AIFunctionFactory.Create(RandomNumberTools.GetSecretKey),
+        AIFunctionFactory.Create(RandomNumberTools.GetMetamodel, "get-metamodel")
+    ],
+    
+
 };
     
 
@@ -62,7 +84,9 @@ while (continueProcess)
         // Get user prompt and add to chat history
         Console.WriteLine("Your prompt:");
         var userPrompt = Console.ReadLine();
-        if (userPrompt is null || userPrompt.ToLower() == "end" || userPrompt.ToLower() == "quit")
+        if (userPrompt is null 
+        || userPrompt.Equals("end", StringComparison.CurrentCultureIgnoreCase) 
+        || userPrompt.Equals("quit", StringComparison.CurrentCultureIgnoreCase))
         {
             continueProcess = false;
         }
@@ -70,7 +94,7 @@ while (continueProcess)
     }
     if (!continueProcess)
     {
-        await mcpClient.DisposeAsync();
+        // await mcpClient.DisposeAsync();
         break;
     }
 
